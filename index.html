@@ -128,26 +128,17 @@ Gaussian Splatting with Edge Communication</h1>
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            3D Gaussian Splatting (3DGS) has recently demonstrated outstand-
-ing performance in 3D reconstruction and real-time rendering.
+            3D Gaussian Splatting (3DGS) has recently demonstrated outstanding performance in 3D reconstruction and real-time rendering.
 However, its scalability to large scenes remains limited by single-
-GPU memory constraints. We propose ScaleGS, a scalable dis-
-tributed training framework for large-scale 3DGS with lightweight
+GPU memory constraints. We propose ScaleGS, a scalable distributed training framework for large-scale 3DGS with lightweight
 edge-awarecommunication.(1)Wepresentaspatialmedian-guided
-binary partitioning algorithm that divides the point cloud into bal-
-anced, non-overlapping, and spatially contiguous cuboid regions
-for efficient multi-GPU management. To ensure global view consis-
-tency, each GPU independently grows and updates only its local
-Gaussians, while cross-GPU Gaussians are accessed only for ren-
-dering and loss computation. (2) We design a lightweight edge
-communication strategy to significantly reduce cross-GPU com-
-munication overhead. A greedy GPU-Tile remapping algorithm
-leverages the spatial concentration of Gaussians to confine cross-
-GPU communication to edge regions, effectively decoupling com-
-munication complexity from GPU count. An optimized all-to-all
+binary partitioning algorithm that divides the point cloud into balanced, non-overlapping, and spatially contiguous cuboid regions
+for efficient multi-GPU management. To ensure global view consistency, each GPU independently grows and updates only its local
+Gaussians, while cross-GPU Gaussians are accessed only for rendering and loss computation. (2) We design a lightweight edge
+communication strategy to significantly reduce cross-GPU communication overhead. A greedy GPU-Tile remapping algorithm
+leverages the spatial concentration of Gaussians to confine cross-GPU communication to edge regions, effectively decoupling communication complexity from GPU count. An optimized all-to-all
 communication scheme is also introduced to eliminate redundant
-transmissions. (3) Our framework introduces an adaptive edge-
-refined load balancing mechanism that periodically monitors GPU
+transmissions. (3) Our framework introduces an adaptive edge-refined load balancing mechanism that periodically monitors GPU
 workloads and selectively migrates Gaussians between neighboring
 GPUs to maintain balance and spatial continuity with negligible cost. Evaluations on large-scale 4K scenes show that ScaleGS consistently outperforms state-of-the-art methods, achieving up to 20%
 faster training and approximately 20% model size reduction on 8 Tesla P40 GPUs without compromising reconstruction quality.
