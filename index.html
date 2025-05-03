@@ -126,7 +126,7 @@ Gaussian Splatting with Edge Communication</h1>
     <div class="container">
       <h2 class="title"></h2>
       <div style="display: flex; justify-content: center;">
-      <embed src="static/pdfs/sample.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=170" type="application/pdf" width="82%" height="652px" style="border: none; overflow: hidden;" />
+      <embed src="static/pdfs/sample.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=170" type="application/pdf" width="81%" height="650px" style="border: none; overflow: hidden;" />
        </div>
        <h2 class="subtitle has-text-centered">
       On the large-scale MatrixCity and high-resolution Rubble scenes, ScaleGS (Ours) outperforms the state-of-the-art
@@ -173,12 +173,12 @@ faster training and approximately 20% model size reduction on 8 Tesla P40 GPUs w
     <div class="container has-text-centered">
       
       <!-- Image -->
-      <img src="static/images/carousel1.jpg" alt="Merged City Reconstruction"/>
+      <img src="static/images/carousel1.jpg" alt="Merged City Reconstruction"  style="max-width: 70%; height: auto;" />
 
       <!-- Caption -->
       <h2 class="subtitle mt-3">
         The initial point cloud is partitioned into non-overlapping, balanced, and spatially contiguous cuboidal subregions. 
-        After training, each GPU stores its local model as a PLY file, and the full scene is reconstructed by merging these files.
+        After training, each GPU outputs a local PLY model, and the full scene is formed by merging them.
       </h2>
       
     </div>
