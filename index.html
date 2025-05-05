@@ -148,7 +148,7 @@ with 8 GPUs and batch size 4.
             3D Gaussian Splatting (3DGS) has recently demonstrated outstanding performance in 3D reconstruction and real-time rendering.
 However, its scalability to large scenes remains limited by single-
 GPU memory constraints. We propose ScaleGS, a scalable distributed training framework for large-scale 3DGS with lightweight
-edge-awarecommunication. (1) We present a spatial median-guided binary partitioning algorithm that divides the point cloud into balanced, non-overlapping, and spatially contiguous cuboid regions
+edge-aware communication. (1) We present a spatial median-guided binary partitioning algorithm that divides the point cloud into balanced, non-overlapping, and spatially contiguous cuboid regions
 for efficient multi-GPU management. To ensure global view consistency, each GPU independently grows and updates only its local
 Gaussians, while cross-GPU Gaussians are accessed only for rendering and loss computation. (2) We design a lightweight edge
 communication strategy to significantly reduce cross-GPU communication overhead. A greedy GPU-Tile remapping algorithm
