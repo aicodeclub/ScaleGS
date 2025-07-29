@@ -45,6 +45,87 @@
     <!-- MathJax -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+
+      <style>
+        .comparison-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .image-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .image-before, .image-after {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-before {
+            clip-path: inset(0 50% 0 0);
+        }
+        
+        .image-after {
+            clip-path: inset(0 0 0 50%);
+        }
+        
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: white;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .label {
+            position: absolute;
+            top: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            font-weight: bold;
+            z-index: 5;
+        }
+        
+        .label-before {
+            left: 20px;
+        }
+        
+        .label-after {
+            right: 20px;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -203,6 +284,97 @@ with 8 GPUs and batch size 4.
 
 
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <h1 style="text-align: center;">算法效果对比</h1>
+    <p style="text-align: center;">拖动中间的滑块来比较两种算法的效果</p>
+    
+    <div class="comparison-container" id="comparison">
+        <div class="image-container">
+            <img class="image-before" src="static/images/0.jpg" alt="算法A效果">
+            <img class="image-after" src="static/images/1.jpg" alt="算法B效果">
+        </div>
+        
+        <div class="slider" id="slider">
+            <div class="slider-handle">↔</div>
+        </div>
+        
+        <div class="label label-before">算法A</div>
+        <div class="label label-after">算法B</div>
+    </div>
+    
+    <script>
+        const slider = document.getElementById('slider');
+        const comparison = document.getElementById('comparison');
+        const beforeImage = document.querySelector('.image-before');
+        const afterImage = document.querySelector('.image-after');
+        let isDragging = false;
+        
+        slider.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            e.preventDefault(); // 防止文本选中
+        });
+        
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+        
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            
+            const containerRect = comparison.getBoundingClientRect();
+            let x = e.clientX - containerRect.left;
+            
+            // 限制在容器范围内
+            x = Math.max(0, Math.min(x, containerRect.width));
+            
+            // 更新滑块位置
+            slider.style.left = x + 'px';
+            
+            // 更新图片裁剪
+            const percentage = (x / containerRect.width) * 100;
+            beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        });
+        
+        // 触摸屏支持
+        slider.addEventListener('touchstart', function(e) {
+            isDragging = true;
+        });
+        
+        document.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            
+            const containerRect = comparison.getBoundingClientRect();
+            let x = e.touches[0].clientX - containerRect.left;
+            
+            // 限制在容器范围内
+            x = Math.max(0, Math.min(x, containerRect.width));
+            
+            // 更新滑块位置
+            slider.style.left = x + 'px';
+            
+            // 更新图片裁剪
+            const percentage = (x / containerRect.width) * 100;
+            beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        });
+    </script>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+  
   
 
   
