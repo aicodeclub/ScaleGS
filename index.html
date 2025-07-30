@@ -46,52 +46,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片对比滑块</title>
-    <style>
-        .comparison-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            margin: 20px auto;
-            overflow: hidden;
-            border: 2px solid #ccc;
-        }
-        .comparison-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .img-top {
-            clip-path: inset(0 50% 0 0);
-        }
-        .slider {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: white;
-            left: 50%;
-            cursor: ew-resize;
-            box-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-        .slider::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-    </style>
+   
   
 </head>
 <body>
@@ -216,63 +171,6 @@
 </section>
 
 
-<body>
-    <div class="comparison-container">
-        <img src="static/images/3x5.png" alt="图片1" class="img-bottom">
-        <img src="static/images/2x4.png" alt="图片2" class="img-top">
-        <div class="slider"></div>
-    </div>
-
-    <script>
-        const container = document.querySelector('.comparison-container');
-        const slider = document.querySelector('.slider');
-        const imgTop = document.querySelector('.img-top');
-
-        let isDragging = false;
-
-        const moveSlider = (x) => {
-            const containerRect = container.getBoundingClientRect();
-            let percentage = ((x - containerRect.left) / containerRect.width) * 100;
-            percentage = Math.max(0, Math.min(100, percentage));
-            
-            slider.style.left = `${percentage}%`;
-            imgTop.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        };
-
-        slider.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                moveSlider(e.clientX);
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        // 支持触摸设备
-        slider.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            e.preventDefault();
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                moveSlider(e.touches[0].clientX);
-            }
-        });
-
-        document.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-    </script>
-</body>
-
-
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -377,8 +275,7 @@ the number of GPUs, implying that its advantages are expected to scale favorably
       <h2 class="subtitle has-text-centered">
       Rendering demonstrations on the MatrixCity dataset.
       </h2> 
-
-            <div id="results-carousel" class="carousel results-carousel">
+        <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <video poster="" id="video1" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
@@ -397,14 +294,9 @@ the number of GPUs, implying that its advantages are expected to scale favorably
       <h2 class="subtitle has-text-centered">
       Rendering demonstrations on the 4K Rubble dataset.
       </h2>
-      
     </div>
   </div>
 </section>
-
-
-
-  
 <!-- End video carousel -->
 
 
