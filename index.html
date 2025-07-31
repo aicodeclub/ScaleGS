@@ -158,7 +158,7 @@
       <img src="static/images/2x2.png" alt="Merged City Reconstruction"  style="max-width: 70%; height: auto;" />
 
       <!-- Caption -->
-      <h2 class="subtitle  has-text-left">
+      <h2 class="subtitle  has-text-left"  style="max-width: 70%; margin: 0 auto;">
         On the large-scale MatrixCity and high-resolution Rubble scenes, ScaleGS (Ours) outperforms the state-of-the-art method in performance. We theoretically prove that our framework can achieve \(O(1)\) cross-GPU communication complexity for nearly all GPUs in typical scenes.
       </h2>
       
@@ -214,7 +214,7 @@
       </div>
 
       <!-- Caption -->
-      <h2 class="subtitle mt-3  has-text-left">
+      <h2 class="subtitle mt-3  has-text-left"  style="max-width: 90%; margin: 0 auto;">
 On the high-resolution Rubble scene, our method achieves a 20% reduction in training time compared to state-of-the-art approaches, while
 preserving high rendering fidelity. Although constrained by current hardware resources, we are unable to empirically validate the full extent
 of scalability. Nonetheless, our analysis demonstrates that the training efficiency of the proposed framework is theoretically independent of
@@ -234,7 +234,7 @@ the number of GPUs, implying that its advantages are expected to scale favorably
       <!-- Image -->
       <img src="static/images/merge.png" alt="Merged City Reconstruction"  style="max-width: 95%; height: auto;" />
       <!-- Caption -->
-      <h2 class="subtitle mt-3  has-text-left">
+      <h2 class="subtitle mt-3  has-text-left"  style="max-width: 95%; margin: 0 auto;">
         (a) The entire scene is divided into eight subregions, each processed by a different GPU. We render each GPU’s trained model as a separate image, showing that each subregion is contiguous, and there are no overlapping regions.
         (b) Merging and rendering the eight models without any post-processing produces a complete scene with no boundary artifacts.
       </h2>
